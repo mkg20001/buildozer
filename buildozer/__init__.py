@@ -1070,7 +1070,8 @@ class Buildozer(object):
         else:
             input_func = raw_input
 
-        warn_on_root = self.config.getdefault('buildozer', 'warn_on_root', '1')
+        # warn_on_root = self.config.getdefault('buildozer', 'warn_on_root', '1')
+        warn_on_root = '0'
         try:
             euid = os.geteuid() == 0
         except AttributeError:
