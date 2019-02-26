@@ -825,8 +825,11 @@ class TargetAndroid(Target):
         cmd = " ".join(cmd)
         self._p4a(cmd)
 
-    def get_release_mode(self): # REVIEW: "release-unsigned" seems no longer used
-        return "release"
+    def get_release_mode(self):
+        if self.check_p4a_sign_env():
+            return "release"
+        return "release-unsigned"
+
 
     def check_p4a_sign_env(self, error=False):
         keys = ["KEYALIAS", "KEYSTORE_PASSWD", "KEYSTORE", "KEYALIAS_PASSWD"]
